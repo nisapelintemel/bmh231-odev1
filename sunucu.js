@@ -1,5 +1,4 @@
 const http = require('http');
-const url = require('url');
 const dayjs = require('dayjs');
 
 const PORT = 3000;
@@ -8,8 +7,8 @@ const server = http.createServer((req, res) => {
   // Her istegin yontemini ve yolunu ucbirime yazdir
   console.log(`[${new Date().toLocaleTimeString('tr-TR')}] ${req.method} ${req.url}`);
 
-  const parsedUrl = url.parse(req.url, true);
-  const pathname = parsedUrl.pathname;
+  // URL yolunu harici/ek modül olmaksızın saf dize olarak ayıkla
+  const pathname = req.url.split('?')[0];
 
   // GET disindaki yontemler icin 405 Method Not Allowed
   if (req.method !== 'GET') {
