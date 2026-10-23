@@ -52,6 +52,14 @@ const server = http.createServer((req, res) => {
   <p><a href="/">Ana Sayfaya Dön</a></p>
 </body>
 </html>`);
+  } else if (pathname === '/api/ders') {
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    const dersBilgisi = {
+      kod: 'BMH231',
+      ad: 'Web Programlama',
+      gun: 'Cuma'
+    };
+    res.end(JSON.stringify(dersBilgisi, null, 2));
   } else {
     // Diger tum tanimsiz yollar icin 404
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
