@@ -1,0 +1,20 @@
+{
+  "name": "bmh231-odev1",
+  "version": "1.0.0",
+  "description": "BMH231 Web Programlama Ödev 1 - Basit Node.js HTTP Sunucusu",
+  "main": "sunucu.js",
+  "scripts": {
+    "start": "node sunucu.js"
+  },
+  "keywords": [
+    "nodejs",
+    "http",
+    "web-programming",
+    "bozok"
+  ],
+  "author": "Nisa Pelin Temel <16008125084@ogr.bozok.edu.tr>",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.11.19"
+  }
+}
