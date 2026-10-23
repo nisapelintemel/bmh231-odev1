@@ -31,7 +31,7 @@ const server = http.createServer((req, res) => {
   <title>Ana Sayfa</title>
 </head>
 <body>
-  <h1>BMH231 Web Programlama - Ana Sayfa</h1>
+  <h1>BMH231 Web Programlama Sunucusuna Hos Geldiniz (baslik dali)</h1>
   <p><a href="/hakkimda">Hakkımda sayfasına git</a></p>
 </body>
 </html>`);
