@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const dayjs = require('dayjs');
 
 const PORT = 3000;
 
@@ -60,6 +61,16 @@ const server = http.createServer((req, res) => {
       gun: 'Cuma'
     };
     res.end(JSON.stringify(dersBilgisi, null, 2));
+  } else if (pathname === '/api/agep') {
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    const bugun = dayjs().startOf('day');
+    const hedefTarih = dayjs('2026-11-01');
+    const kalanGun = hedefTarih.diff(bugun, 'day');
+    const agepBilgisi = {
+      sonTeslimTarihi: '01.11.2026',
+      kalanGun: kalanGun
+    };
+    res.end(JSON.stringify(agepBilgisi, null, 2));
   } else {
     // Diger tum tanimsiz yollar icin 404
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
