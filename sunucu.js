@@ -34,6 +34,24 @@ const server = http.createServer((req, res) => {
   <p><a href="/hakkimda">Hakkımda sayfasına git</a></p>
 </body>
 </html>`);
+  } else if (pathname === '/hakkimda') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(`<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Hakkımda - Nisa Pelin Temel</title>
+</head>
+<body>
+  <h1>Hakkımda</h1>
+  <p><strong>Ad Soyad:</strong> Nisa Pelin Temel</p>
+  <p><strong>Öğrenci No:</strong> 16008125084</p>
+  <p><strong>Bölüm:</strong> Bilgisayar Mühendisliği</p>
+  <p><strong>Üniversite:</strong> Yozgat Bozok Üniversitesi</p>
+  <p><strong>E-posta:</strong> 16008125084@ogr.bozok.edu.tr</p>
+  <p><a href="/">Ana Sayfaya Dön</a></p>
+</body>
+</html>`);
   } else {
     // Diger tum tanimsiz yollar icin 404
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
