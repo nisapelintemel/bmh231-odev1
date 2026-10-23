@@ -1,0 +1,46 @@
+const http = require('http');
+const url = require('url');
+
+const PORT = 3000;
+
+const server = http.createServer((req, res) => {
+  // Her istegin yontemini ve yolunu ucbirime yazdir
+  console.log(`[${new Date().toLocaleTimeString('tr-TR')}] ${req.method} ${req.url}`);
+
+  const parsedUrl = url.parse(req.url, true);
+  const pathname = parsedUrl.pathname;
+
+  // GET disindaki yontemler icin 405 Method Not Allowed
+  if (req.method !== 'GET') {
+    res.writeHead(405, {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Allow': 'GET'
+    });
+    res.end('Yönteme izin verilmiyor');
+    return;
+  }
+
+  // Rotalar
+  if (pathname === '/') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(`<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Ana Sayfa</title>
+</head>
+<body>
+  <h1>BMH231 Web Programlama - Ana Sayfa</h1>
+  <p><a href="/hakkimda">Hakkımda sayfasına git</a></p>
+</body>
+</html>`);
+  } else {
+    // Diger tum tanimsiz yollar icin 404
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('Sayfa bulunamadı');
+  }
+});
+
+server.listen(PORT, () => {
+  console.log(`Sunucu http://localhost:${PORT} adresinde çalışıyor...`);
+});
